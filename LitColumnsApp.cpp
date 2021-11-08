@@ -429,7 +429,12 @@ void LitColumnsApp::UpdateMainPassCB(const GameTimer& gt)
 	mMainPassCB.DeltaTime = gt.DeltaTime();
 	mMainPassCB.AmbientLight = { 0.25f, 0.25f, 0.35f, 1.0f };
 	// Edited the colours emitted by the directional lights in the scene
-	mMainPassCB.Lights[0].Direction = { 0.57735f, -0.57735f, 0.57735f };
+	if (mEyePos.x < 0) {
+		mMainPassCB.Lights[0].Direction = { 0.57735f, -0.3335f, 0.57735f };
+	}
+	else {
+		mMainPassCB.Lights[0].Direction = { 0.57735f, -0.57735f, 0.57735f };
+	}
 	mMainPassCB.Lights[0].Strength = { 0.9843f, -0.5176f, 0.8f };
 	mMainPassCB.Lights[1].Direction = { -0.57735f, -0.57735f, 0.57735f };
 	mMainPassCB.Lights[1].Strength = { 0.4235f, 0.8745f, 0.9921f };
